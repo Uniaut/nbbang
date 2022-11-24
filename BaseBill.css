@@ -1,0 +1,73 @@
+html, body {
+    height:100%;
+}
+
+.whole {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.topContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.topContainer .makeBillButton {
+    z-index: 4; /*모름*/
+    align-self: center; /*모름*/
+    min-width: 0px;
+    order: 2; /*모름*/
+    min-height: 40px;
+    max-height: 40px;
+    width: max-content;
+    flex-grow: 0; /*모름*/
+    height: 40px;
+    margin: 5px;
+    padding: 0px 10px;
+    cursor: pointer;
+    background: #00c4ff;
+    border: none;
+    text-align: center;
+    color: white;
+    border-radius: 5px;
+    box-shadow : 2px 2px 2px darkgrey;
+    transition-duration: 0.3s;
+}
+
+.topContainer .makeBillButton:active{
+    box-shadow : none;
+}
+
+.billContainer {
+    flex:1;
+    width: auto;
+    background-color: #f3f3f3;
+}
+
+.billContainer .billBorder {
+    justify-content: center;
+    box-sizing: content-box;
+    min-height: 200px;
+    border-top-style: none;
+    border-left-style: none;
+    background-color: red; /*색깔 수정 할 것*/
+}
+
+.billContainer .billBorder .bill {
+    z-index: 4;
+    align-self: flex-start;
+    min-width: 0px;
+    order: 1;
+    min-height: 180px;
+    flex-grow: 1;
+    margin: 5% 5% 5% 5%;
+    display: block;
+    overflow: visible;
+    background-color: blue;
+    border-radius: 10px;
+    border-style: none;
+    border-width: 2px;
+    border-color: rgba(228, 234, 241, 0.25);
+}
+
