@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- 생성된 BillBook의 만들어진 Bill들을 볼 수 있는 곳 -->
+<head>
+    <meta charset="UTF-8">
+    <title>resultBill</title>
+    <link rel="stylesheet" href="\BaseBill.css">
+</head>
+<body>
+<div class="whole">
+    <div class="topContainer">
+        <h2>
+            <!-- 여기에 Bill의 세부적인 제목이 들어감-->
+            날짜/시간/제목
+        </h2>
+        <!-- 이 부분은 다른 페이지와의 형식을 맞추기 위해서 일부러 남겨둠 -->
+        <div>
+        </div>
+    </div>
+    <div class ="dataContainer">
+        <textarea class="detailBox baseBox centerBox" placeholder="Bill에 대한 설명을 적어주세요."></textarea>
+        <!-- ~~원이 자동으로 들어가게 해줘야되는데 우선 보류 -->
+        <textarea class="priceBox baseBox centerBox" placeholder="총 금액을 적어주세요."></textarea>
+        <div class ="priceMember">
+            <div class="oneMember">
+                <textarea class="oneMemberText memberText">멤버이름</textarea>
+                <textarea class="oneMemberText priceText">가격</textarea>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

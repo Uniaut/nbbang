@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- 생성된 BillBook의 만들어진 Bill들을 볼 수 있는 곳 -->
+<head>
+  <meta charset="UTF-8">
+  <title>resultBill</title>
+  <link rel="stylesheet" href="\BaseBill.css">
+</head>
+<body>
+<div class="whole">
+  <div class="topContainer">
+    <h2>
+      <!-- Bill 제목 - 정산 결과 이렇게나타내고 싶은데 우선 정산 결과라고마 나옴-->
+      정산결과
+    </h2>
+    <div>
+      <!-- 결과를 공유한다 -->
+      <button class="BillButton">
+        공유하기
+      </button>
+    </div>
+
+  </div>
+  <div class="dataContainer">
+    <div class="bill">
+      <div class="bill-text">
+        <!-- 해당 멤버의 이름을 보여줌 -->
+        <div class="bill-text-tool bill-text-title">멤버 이름</div>
+        <!-- 해당 멤버가 특정 멤버에게 얼마를 받아야 하는지 알려주는 부분 -->
+        <div class="bill-text-tool bill-text-result ">
+          <li>Member2에게 3000원 받아야 합니다.</li>
+          <li>Member3에게 3000원 받아야 합니다.</li>
+          <li>Member4에게 3000원 받아야 합니다.</li>
+          <li>Member5에게 3000원 받아야 합니다.</li>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
