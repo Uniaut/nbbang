@@ -35,6 +35,8 @@ html, body {
     box-shadow : 2px 2px 2px darkgrey;
     transition-duration: 0.3s;
 }
+
+
 .topContainer .BillButton:active{
     box-shadow : none;
 }
@@ -68,6 +70,10 @@ html, body {
 }
 .MenuButton:active{
     box-shadow : none;
+}
+/*우선 disabled한 부분을 회색으로 바꿧지만 able한 부분이 회색인게 좋지 않을 까 생각*/
+button[class="MenuButton"]:disabled {
+    background: #ccc;
 }
 
 /*실제 data들을 감싸는 부분, 이름은 bill로 되어있지만 member도 같은 양식, 여러개의 bill로 이루어져 있다.*/
