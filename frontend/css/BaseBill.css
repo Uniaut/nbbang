@@ -68,7 +68,7 @@ html, body {
     box-shadow : 2px 2px 2px darkgrey;
     transition-duration: 0.3s;
 }
-.MenuButton:active{
+.MenuButton:enabled:active{
     box-shadow : none;
 }
 /*우선 disabled한 부분을 회색으로 바꿧지만 able한 부분이 회색인게 좋지 않을 까 생각*/
@@ -210,8 +210,4 @@ button[class="MenuButton"]:disabled {
 }
 .priceText {
     width: 20%;
-}
-
-.hidden {
-    display: none;
 }
