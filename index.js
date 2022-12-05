@@ -7,11 +7,7 @@ app.set('view engine', 'html');
 app.use(express.static(__dirname + '/frontend'));
 
 app.get('/', (req, res) => {
-    res.send('index page');
-});
-
-app.get('/mybill', (req, res) => {
-    res.render(__dirname + '/frontend/BillMain.html');
+    res.render(__dirname + '/frontend/BillMain.html', {"title": "빌 메인"});
 })
 
 app.listen(port, (err) => {
