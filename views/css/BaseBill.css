@@ -1,0 +1,257 @@
+html, body {
+    height:100%;
+    background-color: #343a40;
+}
+
+h2 {
+    color: white;
+}
+
+.whole {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/*맨 위의 제목과 버튼을 감싸는 부분*/
+.topContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+/*맨 위의 버튼을 감싸는 부분*/
+.ButtonContainer {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+/*맨 위의 버튼들*/
+.topContainer .BillButton {
+    z-index: 4; /*모름*/
+    align-self: center; /*모름*/
+    min-width: 0px;
+    order: 2; /*모름*/
+    min-height: 40px;
+    max-height: 40px;
+    width: max-content;
+    flex-grow: 0; /*모름*/
+    height: 40px;
+    margin: 5px;
+    padding: 0px 10px;
+    cursor: pointer;
+    background-color: #343a40;
+    outline: solid #ffffff;
+    border: none;
+    text-align: center;
+    color: white;
+    border-radius: 5px;
+    transition-duration: 0.3s;
+}
+
+.topContainer .BillButton:active{
+    outline: solid #000000;
+}
+
+/*bill을 볼 지 member를 볼 지 고를 수 있는 버튼을 감싸는 부분.*/
+.MenuContainer {
+    display: flex;
+    justify-content: space-between;
+}
+/*bill을 볼 지 member를 볼 지 고를 수 있는 버튼.*/
+.MenuButton {
+    z-index: 4; /*모름*/
+    align-self: center; /*모름*/
+    min-width: 0px;
+    order: 2; /*모름*/
+    min-height: 40px;
+    max-height: 40px;
+    width: 50%;
+    flex-grow: 0; /*모름*/
+    height: 40px;
+    margin: 5px;
+    padding: 0px 10px;
+    cursor: pointer;
+    background: #343a40;
+    outline: solid #ffffff;
+    border: none;
+    text-align: center;
+    color: white;
+    border-radius: 5px;
+    box-shadow : 2px 2px 2px darkgrey;
+    transition-duration: 0.3s;
+}
+.MenuButton:enabled:active{
+    outline: solid #000000;
+}
+/*우선 disabled한 부분을 회색으로 바꿧지만 able한 부분이 회색인게 좋지 않을 까 생각*/
+button[class="MenuButton"]:disabled {
+    background: #ffffff;
+    color: black;
+}
+
+/*실제 data들을 감싸는 부분, 이름은 bill로 되어있지만 member도 같은 양식, 여러개의 bill로 이루어져 있다.*/
+.dataContainer {
+    flex:1;
+    width: auto;
+    background-color: #343a40; /*색은 구분하기 쉬우려고 일부러 이렇게 칠했고 이거는 후에 변경할 것*/
+}
+/*한개의 bill들을 나타내는 부분, 이들이 모여서 bill을 보여주는 목록이나 member를 보여주는 목록이 된다.*/
+.dataContainer .bill {
+    align-self: center;
+    min-width: 0px;
+    order: 1;
+    min-height: 180px;
+    flex-grow: 1;
+    margin: 30px;
+    border-style: solid;
+    border-width: 3px;
+    border-color: #ffffff;
+    border-radius: 10px;
+}
+
+/*하나의 bill에서 제목과 설명을 감싸는 부분*/
+.bill-text {
+    align-self: stretch;
+    min-width: 0px;
+    order: 2;
+    min-height: 120px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    width: auto;
+    margin: 0px;
+    justify-content: flex-start;
+    row-gap: 10px;
+    overflow: hidden;
+    border-radius: 0px;
+    padding: 10px 20px;
+}
+/*글에서 content와 title이 공통적으로 가지는 속성을 묶음*/
+.bill-text-tool {
+    z-index: 2;
+    align-self: start;
+    min-width: 0px;
+    order: 1;
+    min-height: 0px;
+    height: max-content;
+    flex-grow: 0;
+    flex-shrink: 0;
+    width: calc(100% - 0px);
+    white-space: pre-wrap;
+    overflow: visible;
+    word-break: break-word;
+    font-weight: bolder;
+    color: rgb(255, 255, 255);
+    text-align: start;
+    line-height: 1;
+    border-radius: 0px;
+}
+/*bill의 title 부분에서 따로 나타나는 부분*/
+.bill-text-title {
+    margin: 0px;
+    font-size: 20px;
+}
+/*bill의 content 부분에서 따로 나타나는 부분*/
+.bill-text-content {
+    margin: 10px 0px 0px 0px;
+    font-size: 15px;
+}
+/*정산결과에서 결과 내용을 보여주는 부분*/
+.bill-text-result {
+    list-style-type: square;
+    line-height: 100%;
+}
+
+/*bill을 확인하고 삭제하는 버튼을 감싸는 부분*/
+.bill-edit{
+    z-index: 12;
+    place-self: end;
+    min-width: 0px;
+    min-height: 0px;
+    width: 100%;
+    height: max-content;
+    margin: 5px;
+    display:flex;
+    justify-content: flex-end;
+    overflow: visible;
+    border-radius: 0px;
+    float: right
+
+}
+
+/*databill에서 bill에 대한 설명을 적는 부분을 위해 만들어진 것*/
+.centerBox{
+    margin-top: 15%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+.baseBox{
+    resize: none;
+    width:80%;
+    position: relative;
+    padding: 10px 10px;
+    outline: solid #ffffff;
+}
+/* 높이를 %로하니까 조절이 안되서 우선 px로 둠 */
+.detailBox{
+    height: 200px;
+}
+.priceBox{
+
+}
+
+/*detailBill에서 각 멤버가 얼마나 사용했는지 나타내는 부분*/
+.priceMember {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin-top: 10%;
+    padding: 0% 10%;
+
+
+}
+/*detailBill에서 각 멤버가 얼마나 사용했는지 나타내는 부분 - 한명만 나타낸다. */
+.oneMember {
+    display: flex;
+    justify-content: space-between;
+}
+
+.oneMemberText {
+    resize: none;
+    position: relative;
+    padding: 10px 10px;
+    display: block;
+    outline: solid #ffffff;
+}
+.memberText {
+    width: 40%;
+}
+.priceText {
+    width: 20%;
+}
+
+.button_image {
+    z-index: 4; /*모름*/
+    align-self: center; /*모름*/
+    min-width: 0px;
+    order: 2; /*모름*/
+    min-height: 40px;
+    max-height: 40px;
+    width: 10%;
+    flex-grow: 0; /*모름*/
+    height: 40px;
+    margin: 5px 2%;
+    padding: 0px 5px;
+    cursor: pointer;
+    background: #343a40;
+    outline: solid #ffffff;
+    border: none;
+    text-align: center;
+    color: white;
+    border-radius: 5px;
+    box-shadow : 2px 2px 2px darkgrey;
+    transition-duration: 0.3s;
+}
+.button_image:enabled:active{
+    outline: solid #000000;
+}

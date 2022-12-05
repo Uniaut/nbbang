@@ -1,0 +1,69 @@
+html, body {
+    height:100%;
+    background-color: #343a40;
+}
+
+h1 {
+    margin: 5% 10%;
+    color: white;
+    text-align: center;
+    outline: solid #ffffff;
+}
+
+h2 {
+    margin: 5% 10%;
+    color: white;
+}
+
+hr{
+    margin: 0% 10%;
+    background:black;
+}
+
+.centerBox{
+    margin-top: 15%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.baseBox{
+    resize: none;
+    width:80%;
+    position: relative;
+    padding: 10px 10px;
+    outline: solid #ffffff;
+}
+
+.titleBox{
+
+}
+
+/* 높이를 %로하니까 조절이 안되서 우선 px로 둠 */
+.contentBox{
+    height: 200px;
+}
+
+.linkBox{
+    resize: none;
+    width:80%;
+    position: relative;
+    padding: 10px 10px;
+    outline: solid #ffffff;
+}
+
+.makeButton{
+    width:80%;
+    height: 35px;
+    background-color: #343a40;
+    border: 0;
+    outline: solid #ffffff;
+    border-radius: 6px;
+    color: white;
+    transition-duration: 0.3s;
+
+}
+.makeButton:active{
+    outline: solid #000000;
+}
+
