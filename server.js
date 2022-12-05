@@ -23,3 +23,4 @@ app.use(session({
 }));
 
 var router = require('./router/main')(app, fs);
+var addBillBookRouter = require('./router/addBillBook')(app,fs);
