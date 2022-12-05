@@ -1,6 +1,1 @@
-{
-    "dummy": {
-        "title": "title",
-        "description": "description"
-    }
-}
+{"billbooks":[{"dummy":{"title":"title","description":"description"}},{"ze2yfb":{"billBookName":"BillBook이름","billBookDetail":"설명","bills":[{"billTitle":{"date":"날짜","time":"시간","title":"제목"},"summary":"요약글","fullPrice":"총가격","memberPrice":[{"member":"이름","price":"가격"}]}],"members":[{"name":"사람이름","account":{"bank":"은행이름","number":"계좌번호"}}]}},{"bOgLPm":{"billBookName":"BillBook이름","billBookDetail":"설명","bills":[{"billTitle":{"date":"날짜","time":"시간","title":"제목"},"summary":"요약글","fullPrice":"총가격","memberPrice":[{"member":"이름","price":"가격"}]}],"members":[{"name":"사람이름","account":{"bank":"은행이름","number":"계좌번호"}}]}},{"SyKzgr":{"billBookName":"BillBook이름","billBookDetail":"설명","bills":[{"billTitle":{"date":"날짜","time":"시간","title":"제목"},"summary":"요약글","fullPrice":"총가격","memberPrice":[{"member":"이름","price":"가격"}]}],"members":[{"name":"사람이름","account":{"bank":"은행이름","number":"계좌번호"}}]}},{"yQw6yz":{"billBookName":"BillBook이름","billBookDetail":"설명","bills":[{"billTitle":{"date":"날짜","time":"시간","title":"제목"},"summary":"요약글","fullPrice":"총가격","memberPrice":[{"member":"이름","price":"가격"}]}],"members":[{"name":"사람이름","account":{"bank":"은행이름","number":"계좌번호"}}]}},{"IAaRin":{"billBookName":"BillBook이름","billBookDetail":"설명","bills":[{"billTitle":{"date":"날짜","time":"시간","title":"제목"},"summary":"요약글","fullPrice":"총가격","memberPrice":[{"member":"이름","price":"가격"}]}],"members":[{"name":"사람이름","account":{"bank":"은행이름","number":"계좌번호"}}]}}]}
