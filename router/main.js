@@ -45,10 +45,10 @@ module.exports = (app, fs) => {
         ]
     }
 
-    /*const dataBuffer = fs.readFileSync('./data/billbook.json');
+    const dataBuffer = fs.readFileSync('./data/billbook.json');
     const dataJSON = dataBuffer.toString();
     const currentBillBookJson = JSON.parse(dataJSON);
     currentBillBookJson.billbooks.push(dataType);
-    fs.writeFileSync('./data/billbook.json', JSON.stringify(currentBillBookJson));*/
+    fs.writeFileSync('./data/billbook.json', JSON.stringify(currentBillBookJson));
   });
 };
