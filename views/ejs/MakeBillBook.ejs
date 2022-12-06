@@ -12,6 +12,21 @@
     <!-- titleBox는 최대 한줄로 제어 -->
     <textarea class="titleBox baseBox centerBox" placeholder="BillBook 제목을 생성해주세요"></textarea>
     <textarea class="contentBox baseBox centerBox" placeholder="BillBook에 대한 설명을 간단히 적어주세요"></textarea>
-    <button class="makeButton centerBox">생성하기</button>
+    <button class="makeButton centerBox" onclick="sendData(TitleObject,ContentObject)">생성하기</button>
 </body>
+
+<script>
+    var TitleObject = document.getElementsByClassName('titleBox baseBox centerBox');
+    TitleObject.value += (s + '\n');
+    var ContentObject = document.getElementsByClassName('contentBox baseBox centerBox');
+    ContentObject.value += (s + '\n');
+
+    function sendData(a,b) {
+        randomCode = {billBookName: "BillBook이름", billBookDetail: "설명"}
+        randomCode.billBookName = TitleObject;
+        randomCode.billBookDetail = ContentObject;
+    }
+</script>
+
+
 </html>
