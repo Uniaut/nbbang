@@ -81,5 +81,39 @@ module.exports = (app, fs) => {
 
         res.send({ router: "/addBill", success: true, desc: "addbill success" });
     });
+
+    app.get("/([0-9A-Za-z*]){6}/addMember", (req, res) => {
+        const billbookCode = req.url.toString().substr(1,6);
+        var billbookIndex = 0;
+        const dataBuffer = fs.readFileSync('./data/billbook.json');
+        const dataJSON = dataBuffer.toString();
+        const billbookJson = JSON.parse(dataJSON);
+
+        for(var i = 0; i < billbookJson.billbooks.length; ++i) {
+            if(billbookCode == Object.keys(billbookJson.billbooks[i])[0]) {
+                billbookIndex = i;
+                break;
+            }
+            billbookIndex = -1;
+        }
+
+        var currentBillBook = billbookJson.billbooks[billbookIndex][billbookCode];
+
+        const dataType = {
+            "name": "멤버이름",
+            "account": {
+                "bank": "멤버은행",
+                "number": "멤버계좌번호"
+            }
+        }
+
+        currentBillBook["members"].push(dataType);
+        fs.writeFileSync(
+            "./data/billbook.json",
+            JSON.stringify(billbookJson)
+        );
+
+        res.send({ router: "/addMember", success: true, desc: "addmember success" });
+    });
 };
   
