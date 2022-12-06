@@ -1,50 +1,85 @@
 module.exports = (app, fs) => {
-    app.get("/addBillBook", (req, res) => {
-      const chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
-      const stringLength = 6;
-      let randomCode = "";
-      for (let i = 0; i < stringLength; i++) {
-        const rnum = Math.floor(Math.random() * chars.length);
-        randomCode += chars.substring(rnum, rnum + 1);
-      }
-  
-      const dataType = { };
-      dataType[randomCode] = {
-          "billBookName": "BillBook이름",
-          "billBookDetail": "설명",
-          
-          "bills": [
-              {
-                  "billTitle": {
-                      "date": "날짜",
-                      "time": "시간",
-                      "title": "제목"
-                  },
-                  "summary": "요약글",
-                  "fullPrice": "총가격",
-                  "memberPrice": [
-                      {
-                          "member": "이름",
-                          "price": "가격"
-                      }
-                  ]
-              }
-          ],
-          "members": [
-              {
-                  "name": "사람이름",
-                  "account": {
-                      "bank": "은행이름",
-                      "number": "계좌번호"
-                  }
-              }
-          ]
-      }
-  
-      const dataBuffer = fs.readFileSync('./data/billbook.json');
+    app.post("/addBillBook", (req, res) => {
+      const dataBuffer = fs.readFileSync("./data/billbook.json");
       const dataJSON = dataBuffer.toString();
       const currentBillBookJson = JSON.parse(dataJSON);
+  
+      const chars =
+        "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
+      const stringLength = 6;
+      let randomCode = "";
+  
+      do {
+        randomCode = "";
+  
+        for (let i = 0; i < stringLength; i++) {
+          const rnum = Math.floor(Math.random() * chars.length);
+          randomCode += chars.substring(rnum, rnum + 1);
+        }
+      } while (currentBillBookJson.billbooks.includes(randomCode) == true);
+  
+      const dataType = {};
+      dataType[randomCode] = {
+        billBookName: req.body.billBookName,
+        billBookDetail: req.body.billBookDetail,
+        bills: [],
+        members: [],
+      };
       currentBillBookJson.billbooks.push(dataType);
-      fs.writeFileSync('./data/billbook.json', JSON.stringify(currentBillBookJson));
+      fs.writeFileSync(
+        "./data/billbook.json",
+        JSON.stringify(currentBillBookJson)
+      );
+  
+      res.send({ router: "/addBillBook", success: true });
     });
-  };
+
+    app.post("/([0-9A-Za-z*]){6}/addBill", (req, res) => {
+        const billbookCode = req.url.toString().substr(1,6);
+        var billbookIndex = 0;
+        const dataBuffer = fs.readFileSync('./data/billbook.json');
+        const dataJSON = dataBuffer.toString();
+        const billbookJson = JSON.parse(dataJSON);
+
+        for(var i = 0; i < billbookJson.billbooks.length; ++i) {
+            if(billbookCode == Object.keys(billbookJson.billbooks[i])[0]) {
+                billbookIndex = i;
+                break;
+            }
+            billbookIndex = -1;
+        }
+
+        var currentBillBook = billbookJson.billbooks[billbookIndex][billbookCode];
+
+        var today = new Date();
+
+        const dataType = {
+            "billTitle": {
+                "date": today.getFullYear() + '년 ' + (today.getMonth() + 1) + '월 ' + today.getDate() + '일',
+                "time": today.getHours() + '시 ' + today.getMinutes() + '분',
+                "title": req.body.billTitle
+            },
+            "summary": req.body.billSummary,
+            "fullPrice": req.body.fullPrice,
+            "memberPrice": []
+        }
+
+        for(var i = 0; i < req.body.members.length; ++i) {
+            const memberPriceData = {
+                "member": req.body.members[i],
+                "price": req.body.prices[i]
+            }
+
+            dataType["memberPrice"].push(memberPriceData);
+        }
+
+        currentBillBook["bills"].push(dataType);
+        fs.writeFileSync(
+            "./data/billbook.json",
+            JSON.stringify(billbookJson)
+        );
+
+        res.send({ router: "/addBill", success: true, desc: "addbill success" });
+    });
+};
+  
