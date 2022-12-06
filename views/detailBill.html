@@ -26,17 +26,17 @@
             <button class="button_image addMember switchMode hidden">+</button>
         </div>
     </div>
-</div>
-<!-- 저장은 작성한 내용을 벡엔드로 전송한다. -->
-<!-- 취소는 작성한 내용을 백엔드로 보내지 않고 이전 화면인 BillMain으로 넘어간다. -->
-<div class="billManageButton">
-    <div class="switchMode hidden">
-        <button class="viewModeButton button_image">저장</button>
-        <button class="viewModeButton button_image">취소</button>
-    </div>
-    <div class="switchMode">
-        <button class="editModeButton button_image">수정</button>
-        <button class="button_image">돌아가기</button>
+    <!-- 저장은 작성한 내용을 벡엔드로 전송한다. -->
+    <!-- 취소는 작성한 내용을 백엔드로 보내지 않고 이전 화면인 BillMain으로 넘어간다. -->
+    <!-- 원래 dataContainer 밖에 있던 billManageButton을 안으로 넣었, 이로 인해 오류가 생기면 빼서 다른 방안 찾아봐야 하나 우선 이게 디자인 하기 가장 좋은 형태-->
+    <div class="billManageButton">
+        <div class="switchMode hidden">
+            <button class="viewModeButton button_image">저장</button>
+            <button class="viewModeButton button_image">취소</button>
+        </div>
+        <div class="switchMode">
+            <button class="editModeButton button_image">수정</button>
+        </div>
     </div>
 </div>
 <script src="js/detailB.js"></script>

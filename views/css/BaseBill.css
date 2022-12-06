@@ -214,6 +214,7 @@ button[class="MenuButton"]:disabled {
 .oneMember {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 10px;
 }
 
 .oneMemberText {
