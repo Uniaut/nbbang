@@ -116,4 +116,3 @@ module.exports = (app, fs) => {
         res.send({ router: "/addMember", success: true, desc: "addmember success" });
     });
 };
-  
