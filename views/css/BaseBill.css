@@ -255,3 +255,7 @@ button[class="MenuButton"]:disabled {
 .button_image:enabled:active{
     outline: solid #000000;
 }
+
+.hidden {
+    display: none;
+}
