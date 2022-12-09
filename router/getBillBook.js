@@ -18,7 +18,8 @@ module.exports = (app, fs) => {
 
         console.log("getBillBook router");
 
-        res.send({billbook : reqBillBook});
+        //res.send({billbook : reqBillBook});
+        res.render('BillMain.ejs', {billbookName : reqBillBook["billBookName"], bills : reqBillBook["bills"], members : reqBillBook["members"]});
     });
 
     app.get("/([0-9A-Za-z*]){6}/getBills", (req, res) => {

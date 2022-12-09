@@ -1,4 +1,8 @@
 module.exports = (app, fs) => {
+    app.get("/([0-9A-Za-z*]){6}/updateBill", (req, res) => {
+        res.render("detailBill.html");
+    });
+
     app.post("/([0-9A-Za-z*]){6}/updateBill", (req, res) => {
         const billbookCode = req.url.toString().substr(1,6);
         var billbookIndex = 0;

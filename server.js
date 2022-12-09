@@ -12,8 +12,9 @@ var server = app.listen(8080, function(){
     console.log("Express server has started on port 8080")
 });
 
-app.use(express.static('public'));
-
+app.use(express.static(__dirname + 'public'));
+app.use('/js', express.static('./public/js'));
+app.use('/css', express.static('./public/css'));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(session({
