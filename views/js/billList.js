@@ -37,6 +37,5 @@ function menuButtonClicked(event){
 
 //메뉴 버튼 모두에게 클릭 이벤트 때 실행할 함수 menuButtonClicked을 추가한다.
 for (var i = 0; i < menuButtonSections.length; i++) {
-    const item = menuButtonSections.item(i);
-    item.addEventListener("click", menuButtonClicked);
+    menuButtonSections[i].addEventListener("click", menuButtonClicked);
 }

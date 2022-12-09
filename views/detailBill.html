@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- 생성된 BillBook의 만들어진 Bill들을 볼 수 있는 곳 -->
 <head>
     <meta charset="UTF-8">
     <title>resultBill</title>
@@ -9,13 +8,10 @@
 <body>
 <div class="whole">
     <div class="topContainer">
-        <h2>
+        <h2 class="switchh2input">
             <!-- 여기에 Bill의 세부적인 제목이 들어감-->
             날짜/시간/제목
         </h2>
-        <!-- 이 부분은 다른 페이지와의 형식을 맞추기 위해서 일부러 남겨둠 -->
-        <div>
-        </div>
     </div>
     <div class ="dataContainer">
         <textarea class="detailBox baseBox centerBox" placeholder="Bill에 대한 설명을 적어주세요."></textarea>
@@ -25,9 +21,24 @@
             <div class="oneMember">
                 <textarea class="oneMemberText memberText">멤버이름</textarea>
                 <textarea class="oneMemberText priceText">가격</textarea>
+                <button class="button_image deleteMember switchMode hidden">X</button>
             </div>
+            <button class="button_image addMember switchMode hidden">+</button>
+        </div>
+    </div>
+    <!-- 저장은 작성한 내용을 벡엔드로 전송한다. -->
+    <!-- 취소는 작성한 내용을 백엔드로 보내지 않고 이전 화면인 BillMain으로 넘어간다. -->
+    <!-- 원래 dataContainer 밖에 있던 billManageButton을 안으로 넣었, 이로 인해 오류가 생기면 빼서 다른 방안 찾아봐야 하나 우선 이게 디자인 하기 가장 좋은 형태-->
+    <div class="billManageButton">
+        <div class="switchMode hidden">
+            <button class="viewModeButton button_image">저장</button>
+            <button class="viewModeButton button_image">취소</button>
+        </div>
+        <div class="switchMode">
+            <button class="editModeButton button_image">수정</button>
         </div>
     </div>
 </div>
+<script src="js/detailB.js"></script>
 </body>
 </html>
