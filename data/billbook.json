@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 {"billbooks":[]}
+=======
+{"billbooks":[{"sRxxE9":{"billBookName":"test_billbook","billBookDetail":"test_detail","bills":[{"billTitle":{"date":"2022년 12월 8일","time":"22시 19분","title":"test_billTitle2"},"summary":"test_billSummary2","fullPrice":"2222222","memberPrice":[{"member":"test3","price":"3333"},{"member":"test4","price":"4444"}]}],"members":[{"name":"test_member11","account":{"bank":"test_bank11","number":"test_bankNumber11"}}]}}]}
+>>>>>>> ffce4df02c32e956bb32981c8206d4f22bcdf2f3
