@@ -1,40 +1,5 @@
 module.exports = (app, fs) => {
-    app.post("/addBillBook", (req, res) => {
-      const dataBuffer = fs.readFileSync("./data/billbook.json");
-      const dataJSON = dataBuffer.toString();
-      const currentBillBookJson = JSON.parse(dataJSON);
-  
-      const chars =
-        "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
-      const stringLength = 6;
-      let randomCode = "";
-  
-      do {
-        randomCode = "";
-  
-        for (let i = 0; i < stringLength; i++) {
-          const rnum = Math.floor(Math.random() * chars.length);
-          randomCode += chars.substring(rnum, rnum + 1);
-        }
-      } while (currentBillBookJson.billbooks.includes(randomCode) == true);
-  
-      const dataType = {};
-      dataType[randomCode] = {
-        billBookName: req.body.billBookName,
-        billBookDetail: req.body.billBookDetail,
-        bills: [],
-        members: [],
-      };
-      currentBillBookJson.billbooks.push(dataType);
-      fs.writeFileSync(
-        "./data/billbook.json",
-        JSON.stringify(currentBillBookJson)
-      );
-  
-      res.send({ router: "/addBillBook", success: true });
-    });
-
-    app.post("/([0-9A-Za-z*]){6}/addBill", (req, res) => {
+    app.post("/([0-9A-Za-z*]){6}/updateBill", (req, res) => {
         const billbookCode = req.url.toString().substr(1,6);
         var billbookIndex = 0;
         const dataBuffer = fs.readFileSync('./data/billbook.json');
@@ -51,12 +16,10 @@ module.exports = (app, fs) => {
 
         var currentBillBook = billbookJson.billbooks[billbookIndex][billbookCode];
 
-        var today = new Date();
-
         const dataType = {
             "billTitle": {
-                "date": today.getFullYear() + '년 ' + (today.getMonth() + 1) + '월 ' + today.getDate() + '일',
-                "time": today.getHours() + '시 ' + today.getMinutes() + '분',
+                "date": currentBillBook["bills"][req.body.index]["billTitle"]["date"],
+                "time": currentBillBook["bills"][req.body.index]["billTitle"]["time"],
                 "title": req.body.billTitle
             },
             "summary": req.body.billSummary,
@@ -73,16 +36,16 @@ module.exports = (app, fs) => {
             dataType["memberPrice"].push(memberPriceData);
         }
 
-        currentBillBook["bills"].push(dataType);
+        currentBillBook["bills"][req.body.index] = dataType;
         fs.writeFileSync(
             "./data/billbook.json",
             JSON.stringify(billbookJson)
         );
 
-        res.send({ router: "/addBill", success: true, desc: "addbill success" });
+        res.send({ router: "/updateBill", success: true, desc: "update bill success" });
     });
 
-    app.get("/([0-9A-Za-z*]){6}/addMember", (req, res) => {
+    app.post("/([0-9A-Za-z*]){6}/updateMember", (req, res) => {
         const billbookCode = req.url.toString().substr(1,6);
         var billbookIndex = 0;
         const dataBuffer = fs.readFileSync('./data/billbook.json');
@@ -100,19 +63,20 @@ module.exports = (app, fs) => {
         var currentBillBook = billbookJson.billbooks[billbookIndex][billbookCode];
 
         const dataType = {
-            "name": "멤버이름",
+            "name": req.body.memberName,
             "account": {
-                "bank": "멤버은행",
-                "number": "멤버계좌번호"
+                "bank": req.body.memberBank,
+                "number": req.body.memberBankNumber
             }
         }
 
-        currentBillBook["members"].push(dataType);
+        currentBillBook["members"][req.body.index] = dataType;
+
         fs.writeFileSync(
             "./data/billbook.json",
             JSON.stringify(billbookJson)
         );
 
-        res.send({ router: "/addMember", success: true, desc: "addmember success" });
+        res.send({ router: "/updateMember", success: true, desc: "update member success" });
     });
 };
