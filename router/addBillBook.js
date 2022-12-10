@@ -31,7 +31,16 @@ module.exports = (app, fs) => {
         JSON.stringify(currentBillBookJson)
       );
   
-      res.send({ router: "/addBillBook", success: true });
+      //res.send({ router: "/addBillBook", success: true });
+      res.redirect("/" + randomCode);
+    });
+
+    app.get("/([0-9A-Za-z*]){6}/addBill", (req, res) => {
+        res.render("detailBill.html");
+        /*fs.readFile("./views/detailBill.html", (err, data) => {
+            res.writeHead(200, { 'Content-Type' : 'text/html'});
+            res.end(data);
+        });*/
     });
 
     app.post("/([0-9A-Za-z*]){6}/addBill", (req, res) => {
