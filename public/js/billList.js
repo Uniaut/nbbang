@@ -1,6 +1,8 @@
 //메뉴버튼들을 저장
 const menuButtonSections = document.querySelectorAll(".MenuButton");
 
+var isClickedDict = {};
+
 //disabled된 whole영역을 hidden으로 바꾸고 아닌 영역에서 hidden class를 지운다.
 function hideDisabledWhole(){
     const wholeSections = document.querySelectorAll(".whole");
@@ -128,67 +130,71 @@ function deleteBill(event) {
 }
 
 function onClickName(event) {
+  const parent = event.target;
+  if (!isClickedDict[parent.id]) {
+    isClickedDict[parent.id] = true;
 
-        const parent = event.target;
+    const input = document.createElement("input");
+    input.type = "text";
+    input.value = event.target.textContent;
+    input.style = "resize: none;position: relative;margin-top:5px;margin-left:15px;padding: 10px 10px;display: inline-block;outline: solid #ffffff;";
 
-        const input = document.createElement("input");
-        input.type = "text";
-        input.value = event.target.textContent;
-        input.style = "resize: none;position: relative;margin-top:5px;margin-left:15px;padding: 10px 10px;display: inline-block;outline: solid #ffffff;";
+    const update_btn = document.createElement("button");
+    update_btn.innerText = "수정";
+    update_btn.style = "display:inline;padding-top:12px;padding-bottom:13px;";
+    update_btn.addEventListener("click", updateName);
 
-        const update_btn = document.createElement("button");
-        update_btn.innerText = "수정";
-        update_btn.style = "display:inline;padding-top:12px;padding-bottom:13px;";
-        update_btn.addEventListener("click", updateName);
+    const cancel_btn = document.createElement("button");
+    cancel_btn.innerText = "취소";
+    cancel_btn.style = "display:inline;padding-top:12px;padding-bottom:13px;";
+    cancel_btn.addEventListener("click", cancelUpdate);
 
-        const cancel_btn = document.createElement("button");
-        cancel_btn.innerText = "취소";
-        cancel_btn.style = "display:inline;padding-top:12px;padding-bottom:13px;";
-        cancel_btn.addEventListener("click", cancelUpdate);
-
-        parent.appendChild(input);
-        parent.appendChild(update_btn);
-        parent.appendChild(cancel_btn);
-
+    parent.appendChild(input);
+    parent.appendChild(update_btn);
+    parent.appendChild(cancel_btn);
+  }
 }
 
 function updateName(event) {
-    const parent = event.target.parentElement;
-
-    parent.innerText = event.target.previousSibling.value;
-
+  const parent = event.target.parentElement;
+  parent.innerText = event.target.previousSibling.value;
+  
+  isClickedDict[parent.id] = false;
 }
 
 function onClickBank(event) {
 
-        const parent = event.target;
+  const parent = event.target;
 
-        const input = document.createElement("input");
-        input.type = "text";
-        input.value = event.target.textContent;
-        input.style = "resize: none;position: relative;margin-top:5px;margin-left:15px;padding: 10px 10px;display: inline-block;outline: solid #ffffff;";
+  if (!isClickedDict[parent.id]) {
+    isClickedDict[parent.id] = true;
 
-        const update_btn = document.createElement("button");
-        update_btn.innerText = "수정";
-        update_btn.style = "display:inline;padding-top:12px;padding-bottom:13px;";
-        update_btn.addEventListener("click", updateBank);
+    const input = document.createElement("input");
+    input.type = "text";
+    input.value = event.target.textContent;
+    input.style = "resize: none;position: relative;margin-top:5px;margin-left:15px;padding: 10px 10px;display: inline-block;outline: solid #ffffff;";
 
-        const cancel_btn = document.createElement("button");
-        cancel_btn.innerText = "취소";
-        cancel_btn.style = "display:inline;padding-top:12px;padding-bottom:13px;";
-        cancel_btn.addEventListener("click", cancelUpdate);
+    const update_btn = document.createElement("button");
+    update_btn.innerText = "수정";
+    update_btn.style = "display:inline;padding-top:12px;padding-bottom:13px;";
+    update_btn.addEventListener("click", updateBank);
 
-        parent.appendChild(input);
-        parent.appendChild(update_btn);
-        parent.appendChild(cancel_btn);
+    const cancel_btn = document.createElement("button");
+    cancel_btn.innerText = "취소";
+    cancel_btn.style = "display:inline;padding-top:12px;padding-bottom:13px;";
+    cancel_btn.addEventListener("click", cancelUpdate);
 
+    parent.appendChild(input);
+    parent.appendChild(update_btn);
+    parent.appendChild(cancel_btn);
+  }
 }
 
 function updateBank(event) {
     const parent = event.target.parentElement;
-
     parent.innerText = event.target.previousSibling.value;
 
+    isClickedDict[parent.id] = false;
 }
 
 function onClickBankNumber(event) {
@@ -218,20 +224,22 @@ function onClickBankNumber(event) {
 
 function updateBankNumber(event) {
     const parent = event.target.parentElement;
-
     parent.innerText = event.target.previousSibling.value;
 
+    isClickedDict[parent.id] = false;
 }
 
 function cancelUpdate(event) {
-    event.target.previousSibling.previousSibling.remove();
-    event.target.previousSibling.remove();
-    event.target.remove();
+  const parent = event.target.parentElement;
+  isClickedDict[parent.id] = false;
+  event.target.previousSibling.previousSibling.remove();
+  event.target.previousSibling.remove();
+  event.target.remove();
 
-    if(event.target.id == "member_name")
-        toggleName = false;
-    if(event.target.id == "member_bank")
-        toggleBank = false;
-    if(event.target.id == "member_bank_number")
-        toggleBankNumber = false;
+  if(event.target.id == "member_name")
+    toggleName = false;
+  if(event.target.id == "member_bank")
+    toggleBank = false;
+  if(event.target.id == "member_bank_number")
+    toggleBankNumber = false;
 }
