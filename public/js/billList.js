@@ -198,28 +198,29 @@ function updateBank(event) {
 }
 
 function onClickBankNumber(event) {
+  const parent = event.target;
+  
+  if (!isClickedDict[parent.id]) {
+    isClickedDict[parent.id] = true;
+    const input = document.createElement("input");
+    input.type = "text";
+    input.value = event.target.textContent;
+    input.style = "resize: none;position: relative;margin-top:5px;margin-left:15px;padding: 10px 10px;display: inline-block;outline: solid #ffffff;";
 
-        const parent = event.target;
+    const update_btn = document.createElement("button");
+    update_btn.innerText = "수정";
+    update_btn.style = "display:inline;padding-top:12px;padding-bottom:13px;";
+    update_btn.addEventListener("click", updateBankNumber);
 
-        const input = document.createElement("input");
-        input.type = "text";
-        input.value = event.target.textContent;
-        input.style = "resize: none;position: relative;margin-top:5px;margin-left:15px;padding: 10px 10px;display: inline-block;outline: solid #ffffff;";
+    const cancel_btn = document.createElement("button");
+    cancel_btn.innerText = "취소";
+    cancel_btn.style = "display:inline;padding-top:12px;padding-bottom:13px;";
+    cancel_btn.addEventListener("click", cancelUpdate);
 
-        const update_btn = document.createElement("button");
-        update_btn.innerText = "수정";
-        update_btn.style = "display:inline;padding-top:12px;padding-bottom:13px;";
-        update_btn.addEventListener("click", updateBankNumber);
-
-        const cancel_btn = document.createElement("button");
-        cancel_btn.innerText = "취소";
-        cancel_btn.style = "display:inline;padding-top:12px;padding-bottom:13px;";
-        cancel_btn.addEventListener("click", cancelUpdate);
-
-        parent.appendChild(input);
-        parent.appendChild(update_btn);
-        parent.appendChild(cancel_btn);
-
+    parent.appendChild(input);
+    parent.appendChild(update_btn);
+    parent.appendChild(cancel_btn);
+  }
 }
 
 function updateBankNumber(event) {
