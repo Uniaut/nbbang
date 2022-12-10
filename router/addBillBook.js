@@ -1,4 +1,9 @@
 module.exports = (app, fs) => {
+    app.get("/createBillBook", (req, res) => {
+        res.render("createBillBook.ejs");
+    });
+
+
     app.post("/addBillBook", (req, res) => {
       const dataBuffer = fs.readFileSync("./data/billbook.json");
       const dataJSON = dataBuffer.toString();
