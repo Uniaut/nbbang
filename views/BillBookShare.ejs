@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- 생성한 BillBook의 링크를 공유하는 곳 -->
+<head>
+    <meta charset="UTF-8">
+    <title>BillBookShare</title>
+    <link rel="stylesheet" href="/css/BillBookTool.css">
+</head>
+<body>
+  <h1>BillBook 링크 공유</h1>
+  <hr>
+  <textarea id="url" readonly class="linkBox centerBox"><%=url%></textarea>
+  <button id="share_btn" class="makeButton centerBox" style="align-self:center;" onclick="kakaoShare()">공유하기</button>
+  <button class="makeButton centerBox" style="align-self:center;" onclick="cancel()">돌아가기</button>
+  <!-- 버튼 밑에 공유 기능 칸 들어가야 됨 -->
+</body>
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script>
+  Kakao.init('2647c07ffeaa73fc566cfe53d45fb3f7');
+  console.log(Kakao.isInitialized());
+
+  var share_url = document.getElementById("url");
+  function kakaoShare() {
+    Kakao.Link.createDefaultButton({
+        container: '#share_btn', // HTML에서 작성한 ID값
+        objectType: 'feed',
+        content: {
+        title: "NBBANG 정산요청", // 보여질 제목
+        description: "최종 정산 요청이 도착했습니다", // 보여질 설명
+        imageUrl: share_url.value, // 콘텐츠 URL
+        link: {
+            mobileWebUrl: share_url.value,
+            webUrl: share_url.value
+        }
+        }
+    });
+  }
+
+  function cancel() {
+    window.location.href = window.location.origin + window.location.pathname.substring(0,7) + '/settleBillBook';
+  }
+</script>
+</html>

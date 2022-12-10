@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>resultBill</title>
-  <link rel="stylesheet" href="css\BaseBill.css">
+  <link rel="stylesheet" href="/css/BaseBill.css">
 </head>
 <body>
 <div class="whole">
@@ -15,9 +15,8 @@
     </h2>
     <div>
       <!-- 결과를 공유한다 -->
-      <button class="BillButton">
-        공유하기
-      </button>
+      <button class="BillButton" onclick="shareResult()">공유하기</button>
+      <button class="BillButton" onclick="cancel()">돌아가기</button>
     </div>
 
   </div>
@@ -27,17 +26,8 @@
         <!-- 해당 멤버의 이름을 보여줌 -->
         <!-- <div class="bill-text-tool bill-text-title">멤버 이름</div> -->
         <!-- 해당 멤버가 특정 멤버에게 얼마를 받아야 하는지 알려주는 부분 -->
-        <% for(int i = 0; i < resultMember.length; i++) { %> 
-            <div class="bill-text-tool bill-text-result ">
-                <li><%= jsonObj["randomCode"]["members"][i]["name"] %>는
-                    <% var zero = 0 %>
-                    <% for(int j=0;j<totalPrice.length;j++) { %>
-                        <% zero += jsonObj["randomCode"]["bills"][j]["memberPrice"][i]["price"] %> 
-                    <% } %> 
-                    <%= zero %> 
-                    원을 내야합니다.</li>
-            </div>
-        <% } %> 
+        <ul id="settle_list" style="list-style:none;">
+        </ul>
       </div>
     </div>
   </div>
@@ -45,8 +35,61 @@
 </body>
 
 <script>
-    var resultMember = jsonObj["randomCode"]["members"];
-    var totalPrice = jsonObj["randomCode"]["bills"];
+    fetch(window.location.origin + window.location.pathname.substring(0,7) + "/getBills", {method: "GET"})
+    .then((res) => {
+      return res.json();
+    })
+    .then((data) => {
+      settle_price = {};
+
+      for(var i = 0; i < data["bills"].length; ++i) {
+        for(var j = 0; j < data["bills"][i]["memberPrice"].length; ++j) {
+          if(data["bills"][i]["memberPrice"][j]["member"] in settle_price == false) {
+            settle_price[data["bills"][i]["memberPrice"][j]["member"]] = 0;
+          }
+
+          if(data["bills"][i]["memberPrice"][j]["member"] in settle_price) {
+            settle_price[data["bills"][i]["memberPrice"][j]["member"]] += parseInt(data["bills"][i]["memberPrice"][j]["price"]);
+          }
+        } 
+      }
+
+      for(var i in settle_price) {
+        const list = document.getElementById("settle_list");
+        const list_elem = document.createElement("li");
+        const span_name = document.createElement("span");
+        const span_price = document.createElement("span");
+        const br = document.createElement("br");
+        const space = document.createElement("span");
+        const p = document.createElement("span");
+        space.innerHTML = "에게 ";
+        p.innerHTML = "원을 받아야합니다.";
+
+        span_name.className += "member_name";
+
+        span_price.className += "member_price";
+
+        span_name.innerHTML = i;
+        span_price.innerHTML = settle_price[i];
+
+
+        list_elem.appendChild(span_name);
+        list_elem.appendChild(space);
+        list_elem.appendChild(span_price);
+        list_elem.appendChild(p);
+        list_elem.appendChild(br);
+
+        list.appendChild(list_elem);
+      }
+    });
+
+    function cancel() {
+      window.location.href = window.location.origin + window.location.pathname.substring(0,7);
+    }
+
+    function shareResult() {
+      window.location.href = window.location.origin + window.location.pathname.substring(0,7) + "/shareBillBook";
+    }
 </script>
 
 </html>

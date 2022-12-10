@@ -51,6 +51,10 @@ function addMember() {
     });
 }
 
+function settleBill() {
+    window.location.href = window.location.origin + window.location.pathname + "/settleBillBook";
+}
+
 function addBill() {
     window.location.href = window.location.origin + window.location.pathname + "/addBill";
 }

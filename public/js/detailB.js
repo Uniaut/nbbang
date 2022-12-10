@@ -26,7 +26,6 @@ if(billbookCode.test(window.location.pathname.substring(1,7))) {
             return res.json();
         })
         .then((data) => {
-            console.log(data);
             document.getElementById("billTitle").value = data["bill"]["billTitle"]["title"];
             document.getElementById("billSummary").value = data["bill"]["summary"];
             document.getElementById("fullPrice").value = data["bill"]["fullPrice"];
