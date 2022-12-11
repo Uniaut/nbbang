@@ -13,17 +13,17 @@
         </h2>
     </div>
     <div class ="dataContainer">
-        <input type="text" id="billTitle" class="baseBox centerBox" placeholder="Bill 제목"></input>
-        <textarea id="billSummary" class="detailBox baseBox centerBox" placeholder="Bill에 대한 설명을 적어주세요."></textarea>
+        <input type="text" id="billTitle" class="baseBox centerBox" placeholder="결제 내역 이름"></input>
+        <textarea id="billSummary" class="detailBox baseBox centerBox" placeholder="결제 내역에 대한 설명을 적어주세요."></textarea>
         <!-- ~~원이 자동으로 들어가게 해줘야되는데 우선 보류 -->
         <textarea id="fullPrice" class="priceBox baseBox centerBox" placeholder="총 금액을 적어주세요."></textarea>
         <div class ="priceMember">
-            <h3 style="color:white;">멤버별 가격</h4>
+            <h3 style="color:white;">정산 인원 별 가격</h4>
             <ul id="price_list" style="list-style:none;">
             </ul>
             <div class="oneMember">
-                <input id="member_name" class="oneMemberText memberText" placeholder="멤버이름"></input>
-                <input id="member_price" class="oneMemberText priceText" placeholder="가격"></input>
+                <input id="member_name" class="oneMemberText memberText" placeholder="이름"></input>
+                <input id="member_price" class="oneMemberText priceText" placeholder="금액"></input>
                 <button class="button_image addMember switchMode" onclick="addMemberPrice()">+</button>
             </div>
         </div>
