@@ -4,35 +4,35 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>BillMain</title>
+    <title>가계부 홈</title>
     <link rel="stylesheet" href="/css/BaseBill.css">
 </head>
 
 <body>
     <!-- 공통된 영역은 여기에 배치 -->
     <h2>
-        나의 BillList<br/>
+        나의 결제 내역들<br/>
         <%=billbookName%>
         <!-- 여기에 BillBook 제목 들어가야 됨-->
     </h2>
     <div class="topContainer">
         <div>
             <!-- 빌을 정산하시겠습니까 나오면서 확인을 누를시 정산 페이지로 넘어가야 함, 취소누르면 사라짐 -->
-            <button class="BillButton" onclick="settleBill()">Bill 정산하기</button>
+            <button class="BillButton" onclick="settleBill()">정산하기</button>
             <!-- 새로운 빌 생성칸으로 넘어감 -->
-            <button id="add_bill_btn" class="BillButton" onclick="addBill()">Bill 추가하기</button>
-            <button id="add_member_btn" class="BillButton" onclick="addMember()">Member 만들기</button>
+            <button id="add_bill_btn" class="BillButton" onclick="addBill()">결제 내역 추가</button>
+            <button id="add_member_btn" class="BillButton" onclick="addMember()">정산 인원 추가</button>
         </div>
     </div>
 
     <div class="MenuContainer">
         <!-- 누르면 현재 Bill 창으로 넘어옴 -->
         <button class="MenuButton">
-            Bill
+            결제 내역
         </button>
         <!-- 누르면 현재 Member 창으로 넘어옴 -->
         <button disabled class="MenuButton disabled">
-            Member
+            정산 인원
         </button>
     </div>
 
