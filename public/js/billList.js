@@ -1,5 +1,8 @@
 //메뉴버튼들을 저장
 const menuButtonSections = document.querySelectorAll(".MenuButton");
+const DEFAULT_MEMBER_NAME = "멤버이름";
+const DEFAULT_BANK_NAME = "멤버은행";
+const DEFAULT_BANK_NUMBER = "멤버계좌번호";
 
 var isClickedDict = {};
 
@@ -136,7 +139,10 @@ function onClickName(event) {
 
     const input = document.createElement("input");
     input.type = "text";
-    input.value = event.target.textContent;
+    if (DEFAULT_MEMBER_NAME == event.target.textContent)
+      input.placeholder = event.target.textContent;
+    else
+      input.value = event.target.textContent;
     input.style = "resize: none;position: relative;margin-top:5px;margin-left:15px;padding: 10px 10px;display: inline-block;outline: solid #ffffff;";
 
     const update_btn = document.createElement("button");
@@ -157,7 +163,10 @@ function onClickName(event) {
 
 function updateName(event) {
   const parent = event.target.parentElement;
-  parent.innerText = event.target.previousSibling.value;
+  if (!event.target.previousSibling.value)
+    parent.innerText = event.target.previousSibling.placeholder;
+  else
+    parent.innerText = event.target.previousSibling.value;
   
   isClickedDict[parent.id] = false;
 }
@@ -171,7 +180,10 @@ function onClickBank(event) {
 
     const input = document.createElement("input");
     input.type = "text";
-    input.value = event.target.textContent;
+    if (DEFAULT_BANK_NAME == event.target.textContent)
+      input.placeholder = event.target.textContent;
+    else
+      input.value = event.target.textContent;
     input.style = "resize: none;position: relative;margin-top:5px;margin-left:15px;padding: 10px 10px;display: inline-block;outline: solid #ffffff;";
 
     const update_btn = document.createElement("button");
@@ -192,7 +204,10 @@ function onClickBank(event) {
 
 function updateBank(event) {
     const parent = event.target.parentElement;
-    parent.innerText = event.target.previousSibling.value;
+    if (!event.target.previousSibling.value)
+      parent.innerText = event.target.previousSibling.placeholder;
+    else
+      parent.innerText = event.target.previousSibling.value;
 
     isClickedDict[parent.id] = false;
 }
@@ -204,7 +219,10 @@ function onClickBankNumber(event) {
     isClickedDict[parent.id] = true;
     const input = document.createElement("input");
     input.type = "text";
-    input.value = event.target.textContent;
+    if (DEFAULT_BANK_NUMBER == event.target.textContent)
+      input.placeholder = event.target.textContent;
+    else
+      input.value = event.target.textContent;
     input.style = "resize: none;position: relative;margin-top:5px;margin-left:15px;padding: 10px 10px;display: inline-block;outline: solid #ffffff;";
 
     const update_btn = document.createElement("button");
@@ -225,7 +243,10 @@ function onClickBankNumber(event) {
 
 function updateBankNumber(event) {
     const parent = event.target.parentElement;
-    parent.innerText = event.target.previousSibling.value;
+    if (!event.target.previousSibling.value)
+      parent.innerText = event.target.previousSibling.placeholder;
+    else
+      parent.innerText = event.target.previousSibling.value;
 
     isClickedDict[parent.id] = false;
 }
