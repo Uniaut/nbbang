@@ -28,8 +28,10 @@ module.exports = (app, fs) => {
             },
             "summary": req.body.billSummary,
             "fullPrice": req.body.fullPrice,
+            "paidMember": req.body.paidMember,
             "memberPrice": []
         }
+        console.log(dataType["paidMember"]);
 
         for(var i = 0; i < req.body.members.length; ++i) {
             const memberPriceData = {

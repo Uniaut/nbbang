@@ -10,13 +10,13 @@ if(billbookCode.test(window.location.pathname.substring(1,7))) {
     if(window.location.pathname.substring(8,15) == "addBill") {
         document.getElementById("save_btn").classList.remove('hidden');
         document.getElementById("update_btn").classList.add('hidden');
-        title.innerHTML = "Bill 추가하기";
+        title.innerHTML = "결제 내역 추가하기";
     }
 
     if(window.location.pathname.substring(8,18) == "updateBill") {
         document.getElementById("save_btn").classList.add('hidden');
         document.getElementById("update_btn").classList.remove('hidden');
-        title.innerHTML = "Bill 수정하기";
+        title.innerHTML = "결제 내역 수정하기";
 
         let params = (new URL(document.location)).searchParams;
         index = params.get("index");

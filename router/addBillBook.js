@@ -69,6 +69,7 @@ module.exports = (app, fs) => {
                 "title": req.body.billTitle
             },
             "summary": req.body.billSummary,
+            "paidMember": req.body.paidMember,
             "fullPrice": req.body.fullPrice,
             "memberPrice": []
         }
